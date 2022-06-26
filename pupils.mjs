@@ -1,36 +1,35 @@
-class Teachers {
+class Pupils {
   counter = 0;
-  db = new Map();
+  database = new Map();
   add(data) {
     this.counter++;
     this.validate(data);
     const id = this.counter.toString();
-    this.db.set(id, data);
-    return 'added: ' + id;
+    this.database.set(id, data);
+    return "added: " + id;
   }
 
   read(id) {
-    if (typeof id !== 'string') {
-      throw new Error (`id should be a string`);
+    if (typeof id !== "string") {
+      throw new Error(`id should be a string`);
     }
-    const result = {...this.db.get(id), id:id};
+    const result = { ...this.database.get(id), id: id };
     return result;
   }
 
   update(id, data) {
     if (typeof id !== 'string') {
-      throw new Error(`id should be a string`);
-    }
-    this.db.set(id, data);
-    return 'updated: ' + id;
-    
+        throw new Error(`id should be a string`);
+      }
+      this.database.set(id, data);
+      return 'updated: ' + id;
   }
 
   remove (id) {
     if (typeof id !== 'string') {
       throw new Error(`id should be a string`);
     }
-    if (this.db.delete(id)) {
+    if (this.database.delete(id)) {
       return 'removed: '+ id;
     } else {
       throw new Error(`element could not be removed`);
@@ -55,17 +54,6 @@ class Teachers {
       throw new Error(`incorrect format`);
     }
 
-    if (!Array.isArray(data.emails) || data.emails.length === 0) {
-      throw new Error(`emails field should not be empty`);
-    }
-    for (let email of data.emails) {
-      if (typeof email.email !== "string") {
-        throw new Error(`email type should be a string`);
-      }
-      if (typeof email.primary !== "boolean") {
-        throw new Error(`it should be a boolean`);
-      }
-    }
     if (!Array.isArray(data.phones) || data.phones.length === 0) {
       throw new Error(`phones field should not be empty`);
     }
@@ -77,42 +65,30 @@ class Teachers {
         throw new Error(`it should be a boolean`);
       }
     }
-    if (typeof data.sex !== 'string') {
-        throw new Error ('type should be a string')
+    if (typeof data.sex !== "string") {
+      throw new Error("type should be a string");
     }
     if (data.sex !== "male" && data.sex !== "female") {
-      throw new Error ('indicate male or female')
+      throw new Error("indicate male or female");
     }
 
-    if (!Array.isArray(data.subjects) || data.subjects.length === 0) {
-      throw new Error ('subjects field should not be empty')
-    }
-    for (let subject of data.subjects) {
-      if (typeof subject.subject !== 'string') {
-        throw new Error ('type should be a string')
-      }
-    }
-    if (typeof data.description !== 'undefined' 
-    && typeof data.description !== 'string') {
+    if (
+      typeof data.description !== "undefined" &&
+      typeof data.description !== "string"
+    ) {
       throw new Error(`parameter type should be a string`);
     }
   }
 }
 
-
-const teachers = new Teachers();
+const pupils = new Pupils();
 let x = {
   name: {
     first: "string",
     last: "string",
   },
   dateOfBirth: "12-12-2020", // format date
-  emails: [
-    {
-      email: "string",
-      primary: true,
-    },
-  ],
+
   phones: [
     {
       phone: "string",
@@ -120,16 +96,12 @@ let x = {
     },
   ],
   sex: "female", // male or female
-  subjects: [
-    {
-      subject: "string", // just name property of subject.
-    },
-  ],
+
   description: "string",
 };
 
-const teacherId = teachers.add(x);
-const teacher = teachers.read(teacherId);
+const pupilid = pupils.add(x);
+const pupil = pupils.read(pupilid);
 
 let y = {
   name: {
@@ -137,12 +109,7 @@ let y = {
     last: "string",
   },
   dateOfBirth: "10-12-2020", // format date
-  emails: [
-    {
-      email: "string",
-      primary: true,
-    },
-  ],
+
   phones: [
     {
       phone: "string",
@@ -150,13 +117,9 @@ let y = {
     },
   ],
   sex: "female", // male or female
-  subjects: [
-    {
-      subject: "string", // just name property of subject.
-    },
-  ],
+ 
   description: "string",
 };
-const update = teachers.update(teacherId, y);
-const remove = teachers.remove(teacherId);
+const update = pupils.update(pupilid, y);
+const remove = pupils.remove(pupilid);
 console.log(remove);
