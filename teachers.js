@@ -23,7 +23,6 @@ class Teachers {
     }
     this.db.set(id, data);
     return 'updated: ' + id;
-    
   }
 
   remove (id) {
@@ -31,7 +30,7 @@ class Teachers {
       throw new Error(`id should be a string`);
     }
     if (this.db.delete(id)) {
-      return 'removed: '+ id;
+      return 'removed: ' + id;
     } else {
       throw new Error(`element could not be removed`);
     }
