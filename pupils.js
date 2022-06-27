@@ -1,4 +1,4 @@
-class Pupils {
+export default class Pupils {
   counter = 0;
   database = new Map();
   add(data) {
@@ -6,7 +6,7 @@ class Pupils {
     this.validate(data);
     const id = this.counter.toString();
     this.database.set(id, data);
-    return "added: " + id;
+    return id;
   }
 
   read(id) {
@@ -22,7 +22,7 @@ class Pupils {
         throw new Error(`id should be a string`);
       }
       this.database.set(id, data);
-      return 'updated: ' + id;
+      return id;
   }
 
   remove (id) {
@@ -30,7 +30,7 @@ class Pupils {
       throw new Error(`id should be a string`);
     }
     if (this.database.delete(id)) {
-      return 'removed: '+ id;
+      return id;
     } else {
       throw new Error(`element could not be removed`);
     }

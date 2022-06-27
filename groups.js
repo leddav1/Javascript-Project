@@ -1,4 +1,4 @@
-class Groups {
+export default class Groups {
     counter = 0;
     db = new Map();
     add(room) {

@@ -1,4 +1,4 @@
-class LMS {
+export default class LMS {
   data = new Map();
   add(subject) {
     this.data.set(subject.id, subject);
@@ -15,7 +15,7 @@ class LMS {
   }
 }
 
-class Subject {
+export class Subject {
   static counter = 0;
   constructor(obj) {
     if (typeof obj.title !== 'string'
