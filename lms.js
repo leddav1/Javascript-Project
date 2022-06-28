@@ -9,9 +9,11 @@ export default class LMS {
   verify(subject) {
     return this.data.has(subject.id);
   }
+  read(subjectId) {
+    return this.data.get(subjectId);
+  }
   readAll() {
     return Array.from(this.data.values());
-
   }
 }
 

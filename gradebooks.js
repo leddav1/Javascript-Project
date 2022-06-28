@@ -54,11 +54,9 @@ class Gradebooks {
     };
   }
 
-  readAll() {
+  readAll(gradebookId) {
     const gradebook = this.db.get(gradebookId);
-    const group = this.groups.read(gradebook.groupId);
-    const array = [];
-
+    return gradebook.records;
   }
 }
 
@@ -121,11 +119,11 @@ const gradebook = gradebooks.add(groupId);
 const record = {
   pupilId: pupilId,
   teacherId: teacherId,
-  subjectId: subject.Id,
+  subjectId: subject.id,
   lesson: 1,
   mark: 9,
 };
 const addRecord = gradebooks.addRecord(gradebook.id, record);
 const oliver = gradebooks.read(gradebook.id, pupilId);
 // gradebooks.clear();
-console.log(oliver);
+console.log(gradebooks.readAll(gradebook.id));
