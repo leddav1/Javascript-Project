@@ -59,10 +59,6 @@ class Gradebooks {
     const group = this.groups.read(gradebook.groupId);
     const array = [];
     const pupils = group.readAll();
-    for (let element of pupils) {
-
-    }
-    return array;
   }
 }
 
