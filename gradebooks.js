@@ -58,7 +58,7 @@ class Gradebooks {
     const gradebook = this.db.get(gradebookId);
     const group = this.groups.read(gradebook.groupId);
     const array = [];
-    const pupils = group.readAll();
+
   }
 }
 
