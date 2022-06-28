@@ -38,32 +38,3 @@ export default class Groups {
     }
 }
 
-const room = 236;
-const groups = new Groups();
-
-// Create a new group. add methods takes integer as a parameter. returns id of group
-const groupId = groups.add(room);
-const pupil = {
-    id: 1
-}
-const pupil2 = {
-    id: 3
-}
-
-// Add this pupil to this group
-groups.addPupil(groupId, pupil);
-groups.addPupil(groupId, pupil2);
-
-// Remove this pupil from this group
-groups.removePupil(groupId, pupil.id);
-
-// Update room for this group
-groups.update(groupId, {
-  room: 237
-});
-
-// Read information about group
-console.log(groups.read(groupId));
-
-// It will return array of groups
-console.log(groups.readAll());

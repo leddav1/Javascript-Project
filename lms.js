@@ -34,23 +34,3 @@ export class Subject {
   }
 }
 
-const history = new Subject({
-  title: 'History',
-  lessons: 24
-});
-// When creating a new instance, you should assign unique ID to it.        
-history.id // will return subjectId
-
-const lms = new LMS();
-lms.add(history); // should add subject to lms
-// lms.remove(history); // should remove subject from lms
-
-// will return true or false. Answer will be true if such subject exists in LMS.
-lms.verify(history);
-
-// will return array of registered subjects
-// each subject must contain: id, title, lessons and description propertties.        
-lms.readAll();
-
-console.log(lms.readAll());
-
