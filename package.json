@@ -1,5 +1,4 @@
 {
-  "type": "module",
   "name": "javascript-project",
   "version": "1.0.0",
   "description": "",
@@ -16,5 +15,13 @@
   "bugs": {
     "url": "https://github.com/leddav1/Javascript-Project/issues"
   },
-  "homepage": "https://github.com/leddav1/Javascript-Project#readme"
+  "homepage": "https://github.com/leddav1/Javascript-Project#readme",
+  "dependencies": {
+    "ts-node": "^10.8.2",
+    "typescript": "^4.7.4"
+  },
+  "devDependencies": {
+    "@types/node": "^18.0.1",
+    "tslib": "^2.4.0"
+  }
 }
