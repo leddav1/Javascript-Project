@@ -1,7 +1,7 @@
-type Gradebook = {name: string, , subjects: string, description?: string}
+type Gradebook = {name: {first: string, last: string}, subjects: string, description?: string}
  export default class Gradebooks {
   db = new Map<string, Gradebook>();
-  constructor(groups, teachers, lms) {
+  constructor(groups: Groups, teachers: Teachers, lms: LMS) {
     this.groups = groups;
     this.teachers = teachers;
     this.lms = lms;

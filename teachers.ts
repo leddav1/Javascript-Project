@@ -1,4 +1,4 @@
-type Teacher = {name: string, dateOfBirth: string, emails: string, phones: string, sex: string, subjects: string, description?: string}
+type Teacher = {name: {first: string, last: string}, dateOfBirth: string, emails: string, phones: string, sex: string, subjects: string, description?: string}
 export default class Teachers {
   counter = 0;
   db = new Map<string, Teacher>();

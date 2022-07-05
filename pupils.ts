@@ -1,4 +1,4 @@
-type Pupil = {name: string, dateOfBirth: string, phones: string, sex: string, description?: string}
+type Pupil = {name: { first: string, last: string}, dateOfBirth: string, phones: string, sex: string, description?: string}
 export default class Pupils {
   counter = 0;
   database = new Map<string, Pupil>();
