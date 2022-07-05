@@ -1,4 +1,3 @@
-
 export default class LMS {
   data = new Map<string, Subject>();
   add(subject: Subject) {

@@ -1,7 +1,8 @@
+type Pupil = {name: string, dateOfBirth: string, phones: string, sex: string, description?: string}
 export default class Pupils {
   counter = 0;
-  database = new Map();
-  add(data) {
+  database = new Map<string, Pupil>();
+  add(data: Pupil) {
     this.counter++;
     this.validate(data);
     const id = this.counter.toString();
@@ -9,7 +10,7 @@ export default class Pupils {
     return id;
   }
 
-  read(id) {
+  read(id: string) {
     if (typeof id !== "string") {
       throw new Error(`id should be a string`);
     }
@@ -17,7 +18,7 @@ export default class Pupils {
     return result;
   }
 
-  update(id, data) {
+  update(id: string, data: Pupil) {
     if (typeof id !== 'string') {
         throw new Error(`id should be a string`);
       }
@@ -25,7 +26,7 @@ export default class Pupils {
       return id;
   }
 
-  remove (id) {
+  remove (id: string) {
     if (typeof id !== 'string') {
       throw new Error(`id should be a string`);
     }
@@ -36,7 +37,7 @@ export default class Pupils {
     }
   }
 
-  validate(data) {
+  validate(data: Pupil) {
     if (
       data.name &&
       (typeof data.name.first !== "string" ||

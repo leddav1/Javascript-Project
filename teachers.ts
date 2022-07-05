@@ -1,7 +1,8 @@
+type Teacher = {name: string, dateOfBirth: string, emails: string, phones: string, sex: string, subjects: string, description?: string}
 export default class Teachers {
   counter = 0;
-  db = new Map();
-  add(data) {
+  db = new Map<string, Teacher>();
+  add(data: Teacher) {
     this.counter++;
     this.validate(data);
     const id = this.counter.toString();
@@ -9,7 +10,7 @@ export default class Teachers {
     return id;
   }
 
-  read(id) {
+  read(id: string) {
     if (typeof id !== 'string') {
       throw new Error (`id should be a string`);
     }
@@ -17,7 +18,7 @@ export default class Teachers {
     return result;
   }
 
-  update(id, data) {
+  update(id: string, data: Teacher) {
     if (typeof id !== 'string') {
       throw new Error(`id should be a string`);
     }
@@ -25,7 +26,7 @@ export default class Teachers {
     return id;
   }
 
-  remove (id) {
+  remove (id: string) {
     if (typeof id !== 'string') {
       throw new Error(`id should be a string`);
     }
@@ -36,7 +37,7 @@ export default class Teachers {
     }
   }
 
-  validate(data) {
+  validate(data: Teacher) {
     if (
       data.name &&
       (typeof data.name.first !== "string" ||

@@ -24,16 +24,22 @@ export default class Groups {
 
     removePupil(id: string, pupilId: string) {
         const group = this.db.get(id);
+        if (!group) {
+            throw new Error (`Group not found`)
+        }
         const index = group.pupils.findIndex((pupil: Pupil) => pupil.id === pupilId);
         group.pupils.splice(index, 1);
     }
 
     update(id: string, update: {room: number}) {
         const group = this.db.get(id);
+        if (!group) {
+            throw new Error (`Group not found`)
+        }
         group.room = update.room;
     }
 
-    read(id) {
+    read(id: string) {
         return this.db.get(id);
     }
 
