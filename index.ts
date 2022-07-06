@@ -1,9 +1,9 @@
-import Groups from "./groups.js";
-import Teachers from "./teachers.js";
-import LMS from "./lms.js";
-import Pupils from "./pupils.js";
-import { Subject } from "./lms.js";
-import Gradebooks from "./gradebooks.js";
+import Groups from "./groups";
+import Teachers from "./teachers";
+import LMS from "./lms";
+import Pupils from "./pupils";
+import {Subject} from "./lms";
+import Gradebooks from "./gradebooks";
 
 const groups = new Groups();
 const teachers = new Teachers();

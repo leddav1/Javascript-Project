@@ -1,4 +1,13 @@
-type Teacher = {name: {first: string, last: string}, dateOfBirth: string, emails: string, phones: string, sex: string, subjects: string, description?: string}
+type Teacher = {
+name: {first: string, last: string}, 
+dateOfBirth: string, 
+emails: {email: string, primary: boolean}[], 
+phones: {phone: string, primary: boolean}[], 
+sex: string, 
+subjects: {subject: string}[], 
+description?: string
+}
+
 export default class Teachers {
   counter = 0;
   db = new Map<string, Teacher>();
@@ -14,8 +23,11 @@ export default class Teachers {
     if (typeof id !== 'string') {
       throw new Error (`id should be a string`);
     }
-    const result = {...this.db.get(id), id:id};
-    return result;
+    const teacher = this.db.get(id)
+    if (!teacher) {
+      throw new Error(`teacher not found`)
+    }
+    return {...teacher, id:id};
   }
 
   update(id: string, data: Teacher) {

@@ -1,3 +1,4 @@
+import {Pupil} from "./pupils"
 type Group = {id: string, room: number, pupils: Pupil[]}
 export default class Groups {
     counter = 0;
@@ -15,32 +16,27 @@ export default class Groups {
     }
 
     addPupil(id: string, pupil: Pupil) {
-        const group = this.db.get(id);
-        if (!group) {
-            throw new Error (`Group not found`)
-        }
+        const group = this.read(id);
         group.pupils.push(pupil);
     }
 
     removePupil(id: string, pupilId: string) {
-        const group = this.db.get(id);
-        if (!group) {
-            throw new Error (`Group not found`)
-        }
+        const group = this.read(id);
         const index = group.pupils.findIndex((pupil: Pupil) => pupil.id === pupilId);
         group.pupils.splice(index, 1);
     }
 
     update(id: string, update: {room: number}) {
-        const group = this.db.get(id);
-        if (!group) {
-            throw new Error (`Group not found`)
-        }
+        const group = this.read(id);
         group.room = update.room;
     }
 
     read(id: string) {
-        return this.db.get(id);
+        const group = this.db.get(id);
+        if(!group) {
+            throw new Error(`group not found`)
+        }
+        return group;
     }
 
     readAll() {
@@ -48,18 +44,4 @@ export default class Groups {
     }
 }
 
-interface Pupil {
-    name: {
-        first: string,
-        last: string
-    },
-    dateOfBirth: string,
-    phones: 
-    {
-      phone: string,
-      primary: boolean
-    }[],
-    sex: string, 
-    description: string,
-    id?: string,
-}
+

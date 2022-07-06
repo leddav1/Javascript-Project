@@ -1,4 +1,19 @@
-type Pupil = {name: { first: string, last: string}, dateOfBirth: string, phones: string, sex: string, description?: string}
+export interface Pupil {
+  name: {
+      first: string,
+      last: string
+  },
+  dateOfBirth: string,
+  phones: 
+  {
+    phone: string,
+    primary: boolean
+  }[],
+  sex: string, 
+  description: string,
+  id?: string,
+}
+
 export default class Pupils {
   counter = 0;
   database = new Map<string, Pupil>();
@@ -14,7 +29,11 @@ export default class Pupils {
     if (typeof id !== "string") {
       throw new Error(`id should be a string`);
     }
-    const result = { ...this.database.get(id), id: id };
+    const pupil = this.database.get(id)
+    if (!pupil) {
+      throw new Error(`pupil not found`)
+    }
+    const result = { ...pupil, id: id };
     return result;
   }
 
